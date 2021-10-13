@@ -1,9 +1,9 @@
+###################################   Registration_login: регистрация аккаунта   ########################################
 import time
 from selenium import webdriver
 driver = webdriver.Chrome()
 driver.maximize_window()
 driver.implicitly_wait(5)
-
 driver.get("http://practice.automationtesting.in/")
 my_account_btn = driver.find_element_by_css_selector("a[href='http://practice.automationtesting.in/my-account/']").click()
 time.sleep(1)
@@ -15,6 +15,7 @@ register_btn = driver.find_element_by_css_selector("input[value='Register']").cl
 time.sleep(3)
 driver.quit()
 
+######################################   Registration_login: логин в систему  #####################################
 import time
 from selenium import webdriver
 driver = webdriver.Chrome()

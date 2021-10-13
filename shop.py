@@ -1,3 +1,4 @@
+#################################   Shop: отображение страницы товара   ##############################
 import time
 from selenium import webdriver
 driver = webdriver.Chrome()
@@ -22,6 +23,7 @@ assert "HTML5 Forms" in book_title_text
 driver.quit()
 
 
+###################################   Shop: количество товаров в категории   ###############################
 import time
 from selenium import webdriver
 driver = webdriver.Chrome()
@@ -46,6 +48,7 @@ assert "3" in element_number_text
 driver.quit()
 
 
+######################################   Shop: сортировка товаров (Вариант 1)   #######################################
 import time
 from selenium import webdriver
 driver = webdriver.Chrome()
@@ -67,36 +70,16 @@ order_by = driver.find_element_by_css_selector("select.orderby>[value='menu_orde
 order_by_check = order_by.get_attribute("value")
 assert order_by_check == "menu_order"
 order_by1 = driver.find_element_by_css_selector("select.orderby").click()
-order_by2 = driver.find_element_by_css_selector("select.orderby>[value='price-desc']").click
-html_btn = driver.find_element_by_css_selector("a[href='http://practice.automationtesting.in/product-category/html/']").click()
 time.sleep(1)
-element_number = driver.find_element_by_css_selector(".cat-item.cat-item-19.current-cat>.count")
-element_number_text = element_number.text
-assert "3" in element_number_text
+order_by2 = driver.find_element_by_css_selector("select.orderby>[value='price-desc']").click()
+order_by2 = driver.find_element_by_css_selector("select.orderby>[value='price-desc']")
+order_by2_check = order_by2.get_attribute("value")
+assert order_by2_check == "price-desc"
+time.sleep(3)
 driver.quit()
 
 
-import time
-from selenium import webdriver
-driver = webdriver.Chrome()
-driver.maximize_window()
-driver.implicitly_wait(5)
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-driver.get("http://practice.automationtesting.in/")
-my_account_btn = driver.find_element_by_css_selector("a[href='http://practice.automationtesting.in/my-account/']").click()
-time.sleep(1)
-email = driver.find_element_by_css_selector("input#username")
-email.send_keys("Andrew@andreeff.com")
-password = driver.find_element_by_css_selector("input#password")
-password.send_keys("Dron.kolpino")
-login_btn = driver.find_element_by_css_selector("input[value='Login']").click()
-time.sleep(1)
-shop_btn = driver.find_element_by_css_selector("#menu-item-40>a").click()
-time.sleep(1)
-driver.quit()
-
-
+######################################   Shop: сортировка товаров (Вариант 2)   #######################################
 import time
 from selenium import webdriver
 driver = webdriver.Chrome()
@@ -123,6 +106,7 @@ order_by_check2 = WebDriverWait(driver, 10).until(EC.element_to_be_selected(orde
 driver.quit()
 
 
+######################################   Shop: отображение, скидка товара   ###################################
 import time
 from selenium import webdriver
 driver = webdriver.Chrome()
@@ -131,7 +115,6 @@ driver.implicitly_wait(5)
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
 driver.get("http://practice.automationtesting.in/")
 my_account_btn = driver.find_element_by_css_selector("a[href='http://practice.automationtesting.in/my-account/']").click()
 time.sleep(1)
@@ -156,6 +139,8 @@ WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.ID, "fullRe
 WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "a.pp_close"))).click()
 driver.quit()
 
+
+####################################   Shop: проверка цены в корзине   ####################################
 import time
 from selenium import webdriver
 driver = webdriver.Chrome()
@@ -190,6 +175,8 @@ wait.until(EC.text_to_be_present_in_element((By.CSS_SELECTOR, "td[data-title='Su
 wait.until(EC.text_to_be_present_in_element((By.CSS_SELECTOR, "strong>.woocommerce-Price-amount"), "189.00"))
 driver.quit()
 
+
+##################################   Shop: работа в корзине   ########################################
 import time
 from selenium import webdriver
 driver = webdriver.Chrome()
@@ -235,6 +222,7 @@ assert send_text == "Please enter a coupon code."
 driver.quit()
 
 
+#####################################   Shop:  покупка товара  ###########################################
 import time
 from selenium import webdriver
 driver = webdriver.Chrome()
